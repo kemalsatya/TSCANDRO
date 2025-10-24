@@ -7,7 +7,7 @@ Program tidak dijalankan melalui GUI, melainkan berjalan di _Command Line Interf
 
 ## Struktur File Project
 ```javascript
-📁 KemalSatyaWibowo_2410512056_SistemTellerBank
+📁 Kemal Satya Wibowo_2410512056_Sistem Teller Bank
 ├── main.js              # Program utama sistem teller
 ├── functions.js         # Kumpulan fungsi utama CRUD sistem teller
 ├── data.js              # Sumber data nasabah 
@@ -138,5 +138,6 @@ node main.js
 > [!NOTE]
 > Proyek ini menggunakan library `console-table-without-index` untuk menampilkan data dalam format tabel pada terminal.
 >Library tersebut akan terpasang secara otomatis saat menjalankan `npm install`.
+
 
 
