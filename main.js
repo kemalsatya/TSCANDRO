@@ -4,15 +4,16 @@ let statusBerjalan = true
 do {
     console.log("\n===== Sistem Teller =====\n")
     console.log("Opsi Menu :")
-    console.log("1. Lihat Data Rekening Nasabah")
-    console.log("2. Lihat Data Mutasi Rekening Nasabah")
-    console.log("3. Perbarui Data Rekening Nasabah")
-    console.log("4. Transfer Uang Nasabah")
-    console.log("5. Tarik Uang Nasabah")
-    console.log("6. Setor Uang Nasabah")
-    console.log("7. [KRUSIAL] Bekukan Rekening Nasabah")
-    console.log("8. [KRUSIAL] Hapus Rekening Nasabah")
-    console.log("9. KELUAR")
+    console.log("1. Buat Rekening Baru")
+    console.log("2. Lihat Data Rekening Nasabah")
+    console.log("3. Lihat Data Mutasi Rekening Nasabah")
+    console.log("4. Perbarui Data Rekening Nasabah")
+    console.log("5. Transfer Uang Nasabah")
+    console.log("6. Tarik Uang Nasabah")
+    console.log("7. Setor Uang Nasabah")
+    console.log("8. [KRUSIAL] Bekukan Rekening Nasabah")
+    console.log("9. [KRUSIAL] Hapus Rekening Nasabah")
+    console.log("10. KELUAR")
 
     // ambil input dari user
     let inputUser = Number(await fungsi.ambilInput("\nMasukkan Opsi Angka\n== "))
@@ -23,23 +24,25 @@ do {
     }
     
     switch(inputUser){
-        case 1: await fungsi.lihatRekening() 
+        case 1: await fungsi.buatRekeningBaru()
             break
-        case 2: await fungsi.lihatMutasiRekening()
+        case 2: await fungsi.lihatRekening() 
             break
-        case 3: await fungsi.updateDataRekening()
+        case 3: await fungsi.lihatMutasiRekening()
             break
-        case 4: await fungsi.transferUang()
+        case 4: await fungsi.updateDataRekening()
             break
-        case 5: await fungsi.tarikUang()
+        case 5: await fungsi.transferUang()
             break
-        case 6: await fungsi.setorUang()
+        case 6: await fungsi.tarikUang()
             break
-        case 7: await fungsi.bekukanRekening()
+        case 7: await fungsi.setorUang()
             break
-        case 8: await fungsi.hapusRekening()
+        case 8: await fungsi.bekukanRekening()
             break
-        case 9: statusBerjalan = false
+        case 9: await fungsi.hapusRekening()
+            break
+        case 10: statusBerjalan = false
                 console.log("\n\nKeluar dari Program ...")
             break
     }
