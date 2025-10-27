@@ -3,7 +3,7 @@
 
 ## Gambaran Umum 
 Project ini secara sederhana menyimulasikan sistem yang digunakan oleh seorang Teller Bank untuk mengakomodir kebutuhan nasabahnya. Teller dapat melihat, memperbarui, dan memproses data rekening nasabah.<br/><br/>
-Program tidak dijalankan melalui GUI, melainkan berjalan di _Command Line Interface (CLI)_ melalui terminal. Untuk mendukung project ini, digunakanlah bahasa pemrograman **Javascript** dengan **Node Js** sebagai environmentnya.
+Program tidak dijalankan melalui GUI, melainkan berjalan di _Command Line Interface (CLI)_ melalui terminal. Untuk mendukung project ini, digunakanlah bahasa pemrograman **Javascript** menggunakan **Node Js** sebagai environmentnya.
 
 ## Struktur File Project
 ```javascript
@@ -42,6 +42,7 @@ Data berupa rekening nasabah disimpan dalam sebuah object di dalam variabel arra
 ## Fungsi-fungsi
 Pada project ini, terdapat 12 fungsi yang telah dibuat. Terdapat delapan fungsi yang berinteraksi langsung dengan user dan empat fungsi yang berjalan tanpa user sebagai triggernya. Berikut adalah daftar fungsi-fungsinya :
 - `ambilInput`
+- `buatRekeningBaru`
 - `lihatRekening`
 - `lihatMutasiRekening`
 - `hapusRekening`
@@ -61,6 +62,16 @@ Beragam fungsi yang digunakan pada proyek ini berada di dalam file functions.js 
 Fungsi ini digunakan untuk memberikan kemudahan dalam penulisan kode untuk mengambil input dari user melalui terminal.<br/><br/>Untuk memenuhi kebutuhan itu, fungsi ini menggunakan async/await dengan penggunaan modul readline/promises. Fungsi ini membutuhkan `pertanyaan` dalam bentuk string sebagai parameternya dan mengembalikan sebuah string dari input user.Untuk penggunaan fungsi ini, diperlukan sebuah variabel sebagai wadah pengembalian string.<br/><br/>Contoh penggunaannya adalah sebagai berikut :
     ```
     let variable = await ambilInput("Berikan Pertanyaan")
+    ```
+
+- **buatRekeningBaru()**<br/>
+Fungsi ini digunakan untuk menambahkan rekening baru ke dalam sistem.<br/><br/>
+Prosesnya meminta user untuk mengisi data dasar seperti nama, nomor HP, email, dan saldo awal opsional.
+Apabila saldo awal diinputkan, maka sistem otomatis membuat catatan mutasi pertama dengan jenis "masuk".
+ID rekening baru dihasilkan secara otomatis berdasarkan ID terakhir pada data yang sudah ada.<br/><br/>
+Contoh penggunaan fungsi ini adalah sebagai berikut:
+    ```
+    await buatRekeningBaru()
     ```
 
 - **lihatRekening()**<br/>
@@ -138,6 +149,4 @@ node main.js
 > [!NOTE]
 > Proyek ini menggunakan library `console-table-without-index` untuk menampilkan data dalam format tabel pada terminal.
 >Library tersebut akan terpasang secara otomatis saat menjalankan `npm install`.
-
-
 
