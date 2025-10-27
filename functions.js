@@ -47,6 +47,68 @@ export async function lihatRekening(){
     }
 }
 
+export async function buatRekeningBaru() {
+    let namaNasabah = await ambilInput("Masukkan Nama Nasabah == ")
+    let noHPNasabah = await ambilInput("Masukkan Nomor HP Nasabah == ")
+    let emailNasabah = await ambilInput("Masukkan Email Nasabah == ")
+
+    let nominalAwal = 0
+    let tanyaStatusNominal = true
+    let tanyaNominal = false
+
+    do {
+        let inputStatusNominal = await ambilInput("\nOpsi :\n1. Ya\n2. Tidak\nIngin Input Nominal Awal ? [1/2]\n== ")
+        if (inputStatusNominal != 1 && inputStatusNominal != 2){
+            console.log("Tidak ada Di Pilihan")
+        } else {
+            if (inputStatusNominal == 1) {
+                tanyaNominal = true
+                // tanyaStatusNominal = false
+            }
+            else if (inputStatusNominal == 2) {
+                tanyaNominal = false
+                // tanyaStatusNominal = false
+            }
+            tanyaStatusNominal = false
+        }
+    } while (tanyaStatusNominal)
+
+    if (tanyaNominal){
+        nominalAwal = Number(await ambilInput("Masukkan Nominal Awal == "))
+    }
+
+    if (!namaNasabah || !noHPNasabah || !emailNasabah || isNaN(nominalAwal)) {
+        console.log("\nInput Tidak Valid. Rekening Gagal Dibuat!\n")
+        return
+    }
+
+    const idBaru = rekening.length > 0 ? rekening[rekening.length - 1].id + 1 : 1
+
+    let rekeningBaruNasabah = {
+        id: idBaru,
+        nama: namaNasabah,
+        noHP: noHPNasabah,
+        email: emailNasabah,
+        statusDibekukan: false,
+        nominal: nominalAwal,
+        tanggalDaftar: new Date().toDateString(),
+        mutasiRekening: []
+    }
+
+    if(tanyaNominal){
+        let mutasiBaru = {
+            jenis: "masuk",
+            idMutasi: 1,
+            nominal: nominalAwal,
+            waktu: new Date().toDateString()
+        }
+        rekeningBaruNasabah.mutasiRekening.push(mutasiBaru)
+    }
+
+    rekening.push(rekeningBaruNasabah)
+    console.log("\nRekening Baru telah Ditambahkan!\n")
+}
+
 export async function lihatMutasiRekening(){
     // ambil input id dari rekening yang dicari
     const idRek = Number(await ambilInput("Masukkan ID Rekening yang ingin Diperlihatkan Mutasi Rekeningnya\n== "))
